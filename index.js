@@ -27,20 +27,20 @@ function invokeAction({ action, id, name, email, phone }) {
         });
       break;
 
-    case 'get':
-      getContactById(id)
-        .then(contact => {
-          if (contact) {
-            console.log('Знайдений контакт:');
-            console.log(contact);
-          } else {
-            console.log('Контакт не знайдений.');
-          }
-        })
-        .catch(error => {
-          console.error('Помилка отримання контакту за ID:', error);
-        });
-      break;
+      case 'get':
+        getContactById(id)
+          .then(contact => {
+            if (contact) {
+              console.log('Знайдений контакт:');
+              console.log(contact);
+            } else {
+              console.log('Контакт не знайдений.');
+            }
+          })
+          .catch(error => {
+            console.error('Помилка отримання контакту за ID:', error);
+          });
+        break;
 
     case 'add':
       addContact(name, email, phone)
@@ -53,24 +53,24 @@ function invokeAction({ action, id, name, email, phone }) {
         });
       break;
 
-    case 'remove':
-      removeContact(id)
-        .then(removedContact => {
-          if (removedContact) {
-            console.log('Видалений контакт:');
-            console.log(removedContact);
-          } else {
-            console.log('Контакт не знайдений для видалення.');
-          }
-        })
-        .catch(error => {
-          console.error('Помилка видалення контакту за ID:', error);
-        });
-      break;
-
-    default:
-      console.warn('\x1B[31m Невідомий тип дії!');
-  }
+      case 'remove':
+        removeContact(id)
+          .then(removedContact => {
+            if (removedContact) {
+              console.log('Видалений контакт:');
+              console.log(removedContact);
+            } else {
+              console.log('Контакт не знайдений для видалення або вже видалений.');
+            }
+          })
+          .catch(error => {
+            console.error('Помилка видалення контакту за ID:', error);
+          });
+        break;
+  
+      default:
+        console.warn('\x1B[31m Невідомий тип дії!');
+    }
 }
 
 invokeAction(argv);
