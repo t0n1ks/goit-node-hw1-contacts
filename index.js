@@ -34,7 +34,7 @@ function invokeAction({ action, id, name, email, phone }) {
               console.log('Знайдений контакт:');
               console.log(contact);
             } else {
-              console.log('Контакт не знайдений.');
+              console.log('null');
             }
           })
           .catch(error => {
@@ -60,7 +60,7 @@ function invokeAction({ action, id, name, email, phone }) {
               console.log('Видалений контакт:');
               console.log(removedContact);
             } else {
-              console.log('Контакт не знайдений для видалення або вже видалений.');
+              console.log('null');
             }
           })
           .catch(error => {
